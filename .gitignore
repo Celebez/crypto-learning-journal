@@ -1,0 +1,36 @@
+# Secrets — never commit
+.env
+.env.local
+*.key
+*.pem
+config.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Build / test artifacts
+*.log
+test_*.py
+debug_*.py
+
+# Internal heartbeat / lock files
+.heartbeat
+.heartbeat2
