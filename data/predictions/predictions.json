@@ -1,0 +1,19 @@
+{
+  "predictions": [
+    {
+      "id": 1,
+      "symbol": "BTCUSDT",
+      "action": "BUY",
+      "confidence": 0.75,
+      "reason": "Test prediction - RSI oversold",
+      "timestamp": "2026-05-31T04:37:03.390260",
+      "status": "verified",
+      "result": "WRONG",
+      "verified_at": "2026-06-01T13:16:34.521516",
+      "pnl": -2.9935,
+      "entry_price": 74109.9,
+      "exit_price": 71891.4
+    }
+  ],
+  "next_id": 2
+}
