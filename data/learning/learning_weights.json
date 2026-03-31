@@ -1,0 +1,174 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-06-20T14:49:35.856840+00:00",
+  "total_predictions": 247,
+  "pending_predictions": 8,
+  "verified_predictions": 189,
+  "correct_predictions": 86,
+  "accuracy_rate": 0.455026455026455,
+  "calibration_multiplier": 0.7,
+  "calibration_tier": "LOW",
+  "indicator_weights": {
+    "rsi": {
+      "weight": 30,
+      "accuracy": 0.9075049811822006,
+      "total_signals": 45170,
+      "correct_signals": 40992,
+      "last_adjusted": "2026-06-20T14:49:35.856840+00:00"
+    },
+    "macd": {
+      "weight": 10,
+      "accuracy": 0.41546022048080755,
+      "total_signals": 45174,
+      "correct_signals": 18768,
+      "last_adjusted": "2026-06-20T14:49:35.856840+00:00"
+    },
+    "bb": {
+      "weight": 10,
+      "accuracy": 0.2968078983486076,
+      "total_signals": 45174,
+      "correct_signals": 13408,
+      "last_adjusted": "2026-06-20T14:49:35.856840+00:00"
+    },
+    "ema_9_21": {
+      "weight": 5,
+      "accuracy": 0.28097947616622754,
+      "total_signals": 45167,
+      "correct_signals": 12691,
+      "last_adjusted": "2026-06-20T14:49:35.856840+00:00"
+    },
+    "volume": {
+      "weight": 10,
+      "accuracy": 0.68,
+      "total_signals": 0,
+      "correct_signals": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "oi": {
+      "weight": 10,
+      "accuracy": 0.65,
+      "total_signals": 0,
+      "correct_signals": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "funding_rate": {
+      "weight": 10,
+      "accuracy": 0.62,
+      "total_signals": 0,
+      "correct_signals": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    }
+  },
+  "pattern_weights": {
+    "bb_squeeze": {
+      "weight": 5,
+      "reliability": 0.14285714285714285,
+      "total_detections": 14,
+      "successful_detections": 2,
+      "last_adjusted": "2026-06-13T04:57:53.984315+00:00"
+    },
+    "ema_cross": {
+      "weight": 12,
+      "reliability": 0.68,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "rsi_divergence": {
+      "weight": 12,
+      "reliability": 0.65,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "sr_flip": {
+      "weight": 15,
+      "reliability": 0.75,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "volume_expansion": {
+      "weight": 5,
+      "reliability": 0.4090909090909091,
+      "total_detections": 22,
+      "successful_detections": 9,
+      "last_adjusted": "2026-06-04T16:20:31.119837+00:00"
+    },
+    "oi_expansion": {
+      "weight": 10,
+      "reliability": 0.67,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "whale_accumulation": {
+      "weight": 8,
+      "reliability": 0.63,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "whale_distribution": {
+      "weight": 8,
+      "reliability": 0.61,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "taker_buy_dominance": {
+      "weight": 8,
+      "reliability": 0.66,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    },
+    "taker_sell_dominance": {
+      "weight": 8,
+      "reliability": 0.64,
+      "total_detections": 0,
+      "successful_detections": 0,
+      "last_adjusted": "2026-05-31T00:01:55.401898+00:00"
+    }
+  },
+  "confidence_calibration": {
+    "base_score": 50,
+    "modifiers": {
+      "multi_tf_squeeze": 15,
+      "ema_macd_alignment": 10,
+      "rsi_confirmation": 10,
+      "price_above_key_level": 10,
+      "pnl_stable": 5,
+      "daily_against_signal": -15,
+      "spread_or_liquidity_risk": -10,
+      "no_breakout_confirmation": -10,
+      "high_volatility_without_direction": -10
+    },
+    "tiers": {
+      "high_reliability": {
+        "accuracy_threshold": 80,
+        "multiplier": 1.0,
+        "max_confidence": 100
+      },
+      "medium_reliability": {
+        "accuracy_threshold": 60,
+        "multiplier": 0.85,
+        "max_confidence": 70
+      },
+      "low_reliability": {
+        "accuracy_threshold": 40,
+        "multiplier": 0.7,
+        "max_confidence": 50
+      },
+      "unreliable": {
+        "accuracy_threshold": 0,
+        "multiplier": 0.5,
+        "max_confidence": 30
+      }
+    }
+  },
+  "total_verified": 88,
+  "correct_verified": 52,
+  "last_recalculated": "2026-06-05T07:31:16.267266+00:00",
+  "last_recalibrated": "2026-06-12T12:20:03.844342+00:00"
+}
