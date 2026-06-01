@@ -1,0 +1,579 @@
+{
+  "timestamp": "2026-06-13T02:53:56.283665+00:00",
+  "portfolio": {
+    "equity": 99.38,
+    "balance": 98.65,
+    "available": 94.08,
+    "total_pnl": 0.73,
+    "pnl_pct": 0.73,
+    "positions_count": 2
+  },
+  "positions": [
+    {
+      "symbol": "NEARUSDT",
+      "side": "Sell",
+      "size": 9.5,
+      "entry": 2.0079,
+      "mark": 2.0119,
+      "pnl": -0.038,
+      "leverage": 10.0
+    },
+    {
+      "symbol": "SOXLUSDT",
+      "side": "Buy",
+      "size": 0.14,
+      "entry": 234.86,
+      "mark": 240.32,
+      "pnl": 0.7644,
+      "leverage": 10.0
+    }
+  ],
+  "ticker_data": {
+    "BTCUSDT": {
+      "lastPrice": "63550.20",
+      "volume24h": "61727.1020",
+      "turnover24h": "3925908277.7818",
+      "highPrice24h": "64371.80",
+      "lowPrice24h": "62810.00",
+      "fundingRate": "-0.00000424",
+      "openInterest": "52270.188",
+      "price24hPcnt": "-0.000245"
+    },
+    "ETHUSDT": {
+      "lastPrice": "1665.44",
+      "volume24h": "1017314.0700",
+      "turnover24h": "1698894348.4903",
+      "highPrice24h": "1690.75",
+      "lowPrice24h": "1651.00",
+      "fundingRate": "0.00006454",
+      "openInterest": "816633.74",
+      "price24hPcnt": "-0.005701"
+    },
+    "SOLUSDT": {
+      "lastPrice": "66.910",
+      "volume24h": "8815658.6000",
+      "turnover24h": "592163448.6140",
+      "highPrice24h": "68.800",
+      "lowPrice24h": "65.900",
+      "fundingRate": "-0.00004957",
+      "openInterest": "7248450.1",
+      "price24hPcnt": "-0.003722"
+    },
+    "XRPUSDT": {
+      "lastPrice": "1.1329",
+      "volume24h": "207813143.8000",
+      "turnover24h": "236375866.1202",
+      "highPrice24h": "1.1573",
+      "lowPrice24h": "1.1242",
+      "fundingRate": "-0.00008837",
+      "openInterest": "161446768.5",
+      "price24hPcnt": "-0.012034"
+    },
+    "ADAUSDT": {
+      "lastPrice": "0.1718",
+      "volume24h": "574303625.0000",
+      "turnover24h": "98214688.8319",
+      "highPrice24h": "0.1743",
+      "lowPrice24h": "0.1674",
+      "fundingRate": "0.0001",
+      "openInterest": "260414807",
+      "price24hPcnt": "0.005266"
+    },
+    "LINKUSDT": {
+      "lastPrice": "7.904",
+      "volume24h": "2746922.8000",
+      "turnover24h": "21630735.8289",
+      "highPrice24h": "8.006",
+      "lowPrice24h": "7.750",
+      "fundingRate": "-0.00000297",
+      "openInterest": "5921589.6",
+      "price24hPcnt": "-0.000632"
+    },
+    "DOGEUSDT": {
+      "lastPrice": "0.08627",
+      "volume24h": "3406079934.0000",
+      "turnover24h": "299925607.1661",
+      "highPrice24h": "0.09243",
+      "lowPrice24h": "0.08498",
+      "fundingRate": "-0.00018645",
+      "openInterest": "1087787406",
+      "price24hPcnt": "-0.001157"
+    },
+    "AVAXUSDT": {
+      "lastPrice": "6.594",
+      "volume24h": "3195373.3000",
+      "turnover24h": "21074311.0384",
+      "highPrice24h": "6.695",
+      "lowPrice24h": "6.513",
+      "fundingRate": "-0.00005389",
+      "openInterest": "5173339.5",
+      "price24hPcnt": "-0.009909"
+    }
+  },
+  "analysis": {
+    "BTCUSDT": {
+      "price": 63550.2,
+      "ema9": 63383.178352,
+      "ema21": 62988.201553,
+      "ema50": 62353.478,
+      "ema_alignment": "BULLISH",
+      "rsi": 54.96,
+      "bb_upper": 64464.668518,
+      "bb_lower": 61006.911482,
+      "bb_mid": 62735.79,
+      "bb_width": 0.055116,
+      "macd_line": 425.168888,
+      "macd_signal": 380.232682,
+      "macd_hist": 44.936207,
+      "atr": 922.77821,
+      "atr_pct": 1.45,
+      "vol_ratio": 0.28,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BULLISH"
+    },
+    "ETHUSDT": {
+      "price": 1665.44,
+      "ema9": 1663.841182,
+      "ema21": 1658.091775,
+      "ema50": 1643.9292,
+      "ema_alignment": "BULLISH",
+      "rsi": 49.54,
+      "bb_upper": 1689.16995,
+      "bb_lower": 1617.47205,
+      "bb_mid": 1653.321,
+      "bb_width": 0.043366,
+      "macd_line": 7.713607,
+      "macd_signal": 8.382456,
+      "macd_hist": -0.668849,
+      "atr": 31.494915,
+      "atr_pct": 1.89,
+      "vol_ratio": 0.24,
+      "patterns": [
+        "BB_SQUEEZE"
+      ],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BEARISH"
+    },
+    "SOLUSDT": {
+      "price": 66.91,
+      "ema9": 66.60184,
+      "ema21": 66.057441,
+      "ema50": 65.268,
+      "ema_alignment": "BULLISH",
+      "rsi": 54.19,
+      "bb_upper": 68.194859,
+      "bb_lower": 63.068141,
+      "bb_mid": 65.6315,
+      "bb_width": 0.078114,
+      "macd_line": 0.568967,
+      "macd_signal": 0.475467,
+      "macd_hist": 0.0935,
+      "atr": 1.501706,
+      "atr_pct": 2.24,
+      "vol_ratio": 0.35,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BULLISH"
+    },
+    "XRPUSDT": {
+      "price": 1.1328,
+      "ema9": 1.131686,
+      "ema21": 1.130028,
+      "ema50": 1.127942,
+      "ema_alignment": "BULLISH",
+      "rsi": 49.46,
+      "bb_upper": 1.152917,
+      "bb_lower": 1.096153,
+      "bb_mid": 1.124535,
+      "bb_width": 0.050477,
+      "macd_line": 0.002352,
+      "macd_signal": 0.002227,
+      "macd_hist": 0.000125,
+      "atr": 0.022046,
+      "atr_pct": 1.95,
+      "vol_ratio": 0.34,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BULLISH"
+    },
+    "ADAUSDT": {
+      "price": 0.1718,
+      "ema9": 0.169868,
+      "ema21": 0.16793,
+      "ema50": 0.164542,
+      "ema_alignment": "BULLISH",
+      "rsi": 55.5,
+      "bb_upper": 0.174761,
+      "bb_lower": 0.158629,
+      "bb_mid": 0.166695,
+      "bb_width": 0.096774,
+      "macd_line": 0.002106,
+      "macd_signal": 0.001859,
+      "macd_hist": 0.000248,
+      "atr": 0.005073,
+      "atr_pct": 2.95,
+      "vol_ratio": 0.48,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BULLISH"
+    },
+    "LINKUSDT": {
+      "price": 7.904,
+      "ema9": 7.852405,
+      "ema21": 7.817547,
+      "ema50": 7.7251,
+      "ema_alignment": "BULLISH",
+      "rsi": 52.79,
+      "bb_upper": 7.994842,
+      "bb_lower": 7.601658,
+      "bb_mid": 7.79825,
+      "bb_width": 0.050419,
+      "macd_line": 0.047503,
+      "macd_signal": 0.050881,
+      "macd_hist": -0.003377,
+      "atr": 0.166866,
+      "atr_pct": 2.11,
+      "vol_ratio": 0.24,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BEARISH"
+    },
+    "DOGEUSDT": {
+      "price": 0.08627,
+      "ema9": 0.086288,
+      "ema21": 0.085686,
+      "ema50": 0.084642,
+      "ema_alignment": "BULLISH",
+      "rsi": 51.81,
+      "bb_upper": 0.087955,
+      "bb_lower": 0.08264,
+      "bb_mid": 0.085297,
+      "bb_width": 0.062316,
+      "macd_line": 0.000666,
+      "macd_signal": 0.00061,
+      "macd_hist": 5.6e-05,
+      "atr": 0.001993,
+      "atr_pct": 2.31,
+      "vol_ratio": 0.57,
+      "patterns": [],
+      "market_structure": "HIGHER_HL",
+      "macd_signal_class": "BULLISH"
+    },
+    "AVAXUSDT": {
+      "price": 6.594,
+      "ema9": 6.586447,
+      "ema21": 6.604905,
+      "ema50": 6.70118,
+      "ema_alignment": "BEARISH",
+      "rsi": 45.45,
+      "bb_upper": 6.708784,
+      "bb_lower": 6.430416,
+      "bb_mid": 6.5696,
+      "bb_width": 0.042372,
+      "macd_line": -0.030563,
+      "macd_signal": -0.041472,
+      "macd_hist": 0.010909,
+      "atr": 0.153778,
+      "atr_pct": 2.33,
+      "vol_ratio": 0.29,
+      "patterns": [],
+      "market_structure": "LOWER_LH",
+      "macd_signal_class": "BULLISH"
+    }
+  },
+  "verification_results": [],
+  "new_predictions": [
+    {
+      "prediction_id": "PRED-BTCUSDT-20260613025356-8E27",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "BTCUSDT",
+      "direction": "BULLISH",
+      "target_price": 64464.7,
+      "invalidation_price": 61006.9,
+      "timeframe": "4H",
+      "confidence": 66,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 63550.2,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 54.96,
+        "macd_hist": 44.936207,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 380.232682
+      },
+      "support_resistance": {
+        "resistance": [
+          64464.7,
+          64926.1
+        ],
+        "support": [
+          62735.8,
+          61006.9
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-ETHUSDT-20260613025356-7FD8",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "ETHUSDT",
+      "direction": "BULLISH",
+      "target_price": 1689.2,
+      "invalidation_price": 1617.5,
+      "timeframe": "4H",
+      "confidence": 63,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 1665.44,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 49.54,
+        "macd_hist": -0.668849,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 8.382456
+      },
+      "support_resistance": {
+        "resistance": [
+          1689.2,
+          1704.9
+        ],
+        "support": [
+          1653.3,
+          1617.5
+        ]
+      },
+      "patterns_detected": [
+        "BB_SQUEEZE"
+      ],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-SOLUSDT-20260613025356-AF4E",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "SOLUSDT",
+      "direction": "BULLISH",
+      "target_price": 68.19,
+      "invalidation_price": 63.07,
+      "timeframe": "4H",
+      "confidence": 66,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 66.91,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 54.19,
+        "macd_hist": 0.0935,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 0.475467
+      },
+      "support_resistance": {
+        "resistance": [
+          68.19,
+          68.95
+        ],
+        "support": [
+          65.63,
+          63.07
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-XRPUSDT-20260613025356-F309",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "XRPUSDT",
+      "direction": "BULLISH",
+      "target_price": 1.1529,
+      "invalidation_price": 1.0962,
+      "timeframe": "4H",
+      "confidence": 59,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 1.1328,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 49.46,
+        "macd_hist": 0.000125,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 0.002227
+      },
+      "support_resistance": {
+        "resistance": [
+          1.1529,
+          1.1639
+        ],
+        "support": [
+          1.1245,
+          1.0962
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-ADAUSDT-20260613025356-00AB",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "ADAUSDT",
+      "direction": "BULLISH",
+      "target_price": 0.17476,
+      "invalidation_price": 0.15863,
+      "timeframe": "4H",
+      "confidence": 66,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 0.1718,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 55.5,
+        "macd_hist": 0.000248,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 0.001859
+      },
+      "support_resistance": {
+        "resistance": [
+          0.17476,
+          0.1773
+        ],
+        "support": [
+          0.1667,
+          0.1586
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-LINKUSDT-20260613025356-1BC6",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "LINKUSDT",
+      "direction": "BULLISH",
+      "target_price": 7.9948,
+      "invalidation_price": 7.6017,
+      "timeframe": "4H",
+      "confidence": 59,
+      "confidence_tier": "MEDIUM",
+      "market_context": {
+        "price": 7.904,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 52.79,
+        "macd_hist": -0.003377,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 0.050881
+      },
+      "support_resistance": {
+        "resistance": [
+          7.9948,
+          8.0783
+        ],
+        "support": [
+          7.7983,
+          7.6017
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-DOGEUSDT-20260613025356-C0B4",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "DOGEUSDT",
+      "direction": "BULLISH",
+      "target_price": 0.08796,
+      "invalidation_price": 0.08264,
+      "timeframe": "4H",
+      "confidence": 74,
+      "confidence_tier": "HIGH",
+      "market_context": {
+        "price": 0.08627,
+        "daily_trend": "BULLISH",
+        "ema_alignment": "BULLISH"
+      },
+      "indicators": {
+        "rsi": 51.81,
+        "macd_hist": 5.6e-05,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": 0.00061
+      },
+      "support_resistance": {
+        "resistance": [
+          0.08796,
+          0.089
+        ],
+        "support": [
+          0.0853,
+          0.0826
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "HIGHER_HL",
+      "status": "PREDICTED"
+    },
+    {
+      "prediction_id": "PRED-AVAXUSDT-20260613025356-FC53",
+      "timestamp": "2026-06-13T02:53:56.283665+00:00",
+      "symbol": "AVAXUSDT",
+      "direction": "NEUTRAL",
+      "target_price": 6.7088,
+      "invalidation_price": 6.4304,
+      "timeframe": "4H",
+      "confidence": 35,
+      "confidence_tier": "LOW",
+      "market_context": {
+        "price": 6.594,
+        "daily_trend": "BEARISH",
+        "ema_alignment": "BEARISH"
+      },
+      "indicators": {
+        "rsi": 45.45,
+        "macd_hist": 0.010909,
+        "bb_position": "UPPER_HALF",
+        "macd_signal": -0.041472
+      },
+      "support_resistance": {
+        "resistance": [
+          6.7088
+        ],
+        "support": [
+          6.4304
+        ]
+      },
+      "patterns_detected": [],
+      "market_structure": "LOWER_LH",
+      "status": "PREDICTED"
+    }
+  ],
+  "registry_summary": {
+    "total": 239,
+    "pending": 8,
+    "success": 14,
+    "partial_success": 0,
+    "failure": 0,
+    "expired": 50
+  },
+  "calibration_multiplier": 0.7,
+  "expired_removed": 0,
+  "accuracy_recalculated": 0.4696
+}

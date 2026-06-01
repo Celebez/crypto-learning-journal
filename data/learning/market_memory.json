@@ -1,0 +1,322 @@
+{
+  "last_scan": "2026-05-30T23:36:42.091246+00:00",
+  "snapshots": [
+    {
+      "timestamp": "2026-05-30T23:23:07Z",
+      "portfolio": {
+        "equity": 2030.09,
+        "balance": 2033.09,
+        "available": 1708.53,
+        "total_pnl": -3.0,
+        "pnl_pct": -0.15,
+        "positions_count": 9
+      },
+      "positions": [
+        {
+          "symbol": "BNBUSDT",
+          "side": "Buy",
+          "size": 0.1,
+          "entry": 718.4,
+          "mark": 718.3,
+          "pnl": -0.01,
+          "lev": 3
+        },
+        {
+          "symbol": "ADAUSDT",
+          "side": "Buy",
+          "size": 764,
+          "entry": 0.2363,
+          "mark": 0.2357,
+          "pnl": -0.45,
+          "lev": 3
+        },
+        {
+          "symbol": "BTCUSDT",
+          "side": "Buy",
+          "size": 0.003,
+          "entry": 73934.57,
+          "mark": 73801.6,
+          "pnl": -0.4,
+          "lev": 5
+        },
+        {
+          "symbol": "LINKUSDT",
+          "side": "Buy",
+          "size": 16.2,
+          "entry": 9.2525,
+          "mark": 9.174,
+          "pnl": -1.27,
+          "lev": 10
+        },
+        {
+          "symbol": "SOLUSDT",
+          "side": "Buy",
+          "size": 1.8,
+          "entry": 82.595,
+          "mark": 82.54,
+          "pnl": -0.1,
+          "lev": 3
+        },
+        {
+          "symbol": "ETHUSDT",
+          "side": "Buy",
+          "size": 0.11,
+          "entry": 2024.73,
+          "mark": 2019.7,
+          "pnl": -0.55,
+          "lev": 3
+        },
+        {
+          "symbol": "AVAXUSDT",
+          "side": "Buy",
+          "size": 2.2,
+          "entry": 8.948,
+          "mark": 8.921,
+          "pnl": -0.06,
+          "lev": 3
+        },
+        {
+          "symbol": "XRPUSDT",
+          "side": "Buy",
+          "size": 30,
+          "entry": 1.3287,
+          "mark": 1.3407,
+          "pnl": 0.36,
+          "lev": 3
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "side": "Buy",
+          "size": 1042,
+          "entry": 0.101,
+          "mark": 0.1005,
+          "pnl": -0.52,
+          "lev": 3
+        }
+      ],
+      "analysis": {
+        "BTCUSDT": {
+          "price": 73808.3,
+          "24h_chg": "+0.67%",
+          "ema_align": "BEARISH",
+          "rsi": 43.76,
+          "bb_width": 0.024,
+          "macd_hist": 136.19,
+          "vol_ratio": 0.23,
+          "structure": "LOWER_LH",
+          "patterns": []
+        },
+        "ETHUSDT": {
+          "price": 2019.88,
+          "24h_chg": "+0.59%",
+          "ema_align": "BEARISH",
+          "rsi": 45.76,
+          "bb_width": 0.033,
+          "macd_hist": 4.16,
+          "vol_ratio": 0.28,
+          "structure": "LOWER_LH",
+          "patterns": []
+        },
+        "SOLUSDT": {
+          "price": 82.54,
+          "24h_chg": "+0.84%",
+          "ema_align": "BEARISH",
+          "rsi": 48.5,
+          "bb_width": 0.036,
+          "macd_hist": 0.19,
+          "vol_ratio": 0.42,
+          "structure": "LOWER_LH",
+          "patterns": []
+        },
+        "XRPUSDT": {
+          "price": 1.3408,
+          "24h_chg": "+1.34%",
+          "ema_align": "MIXED",
+          "rsi": 55.62,
+          "bb_width": 0.059,
+          "macd_hist": 0.0042,
+          "vol_ratio": 0.35,
+          "structure": "RANGING",
+          "patterns": []
+        },
+        "ADAUSDT": {
+          "price": 0.2356,
+          "24h_chg": "+1.73%",
+          "ema_align": "BEARISH",
+          "rsi": 47.69,
+          "bb_width": 0.04,
+          "macd_hist": 0.0006,
+          "vol_ratio": 0.64,
+          "structure": "LOWER_LH",
+          "patterns": []
+        },
+        "LINKUSDT": {
+          "price": 9.174,
+          "24h_chg": "+2.14%",
+          "ema_align": "MIXED",
+          "rsi": 50.29,
+          "bb_width": 0.06,
+          "macd_hist": 0.037,
+          "vol_ratio": 0.57,
+          "structure": "RANGING",
+          "patterns": [
+            "BULLISH_CROSS_EMA9x21"
+          ]
+        },
+        "DOGEUSDT": {
+          "price": 0.1005,
+          "24h_chg": "+0.87%",
+          "ema_align": "MIXED",
+          "rsi": 48.7,
+          "bb_width": 0.045,
+          "macd_hist": 0.00023,
+          "vol_ratio": 0.43,
+          "structure": "RANGING",
+          "patterns": []
+        },
+        "AVAXUSDT": {
+          "price": 8.921,
+          "24h_chg": "+1.47%",
+          "ema_align": "BEARISH",
+          "rsi": 45.66,
+          "bb_width": 0.037,
+          "macd_hist": 0.017,
+          "vol_ratio": 0.32,
+          "structure": "LOWER_LH",
+          "patterns": []
+        }
+      },
+      "orderbook": {
+        "BTC": {
+          "bid_ask_ratio": 2.48,
+          "spread_pct": 0.00014
+        },
+        "ETH": {
+          "bid_ask_ratio": 6.57,
+          "spread_pct": 0.0005
+        }
+      },
+      "funding_rates": {
+        "BTC": "0.0076%",
+        "ETH": "0.0100%",
+        "SOL": "0.0056%",
+        "XRP": "0.0026%",
+        "ADA": "-0.0126%",
+        "LINK": "0.0100%",
+        "DOGE": "0.0096%",
+        "AVAX": "0.0100%"
+      }
+    },
+    {
+      "timestamp": "2026-05-30T23:36:42.091246+00:00",
+      "portfolio": {
+        "equity": 2029.36,
+        "balance": 2033.05,
+        "available": 1707.99,
+        "total_pnl": -3.7,
+        "pnl_pct": -0.18,
+        "positions_count": 9
+      },
+      "analysis": {
+        "BTCUSDT": {
+          "price": 73767.5,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "BEARISH",
+          "rsi": 43.26,
+          "bb_position": "MIDDLE",
+          "macd_hist": 133.588427,
+          "vol_ratio": 0.25,
+          "patterns": [],
+          "direction": "BEARISH",
+          "calibrated_confidence": 70
+        },
+        "ETHUSDT": {
+          "price": 2019.74,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "BEARISH",
+          "rsi": 45.71,
+          "bb_position": "MIDDLE",
+          "macd_hist": 4.151956,
+          "vol_ratio": 0.29,
+          "patterns": [],
+          "direction": "BEARISH",
+          "calibrated_confidence": 70
+        },
+        "SOLUSDT": {
+          "price": 82.51,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "BEARISH",
+          "rsi": 48.28,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.187878,
+          "vol_ratio": 0.43,
+          "patterns": [],
+          "direction": "BEARISH",
+          "calibrated_confidence": 70
+        },
+        "XRPUSDT": {
+          "price": 1.3397,
+          "daily_trend": "BULLISH",
+          "ema_alignment": "MIXED",
+          "rsi": 55.05,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.004138,
+          "vol_ratio": 0.36,
+          "patterns": [],
+          "direction": "BULLISH",
+          "calibrated_confidence": 65
+        },
+        "ADAUSDT": {
+          "price": 0.2354,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "BEARISH",
+          "rsi": 47.25,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.000572,
+          "vol_ratio": 0.75,
+          "patterns": [],
+          "direction": "BEARISH",
+          "calibrated_confidence": 70
+        },
+        "LINKUSDT": {
+          "price": 9.165,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "MIXED",
+          "rsi": 49.87,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.036608,
+          "vol_ratio": 0.58,
+          "patterns": [
+            "BULLISH_CROSS"
+          ],
+          "direction": "BULLISH",
+          "calibrated_confidence": 50
+        },
+        "DOGEUSDT": {
+          "price": 0.10036,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "MIXED",
+          "rsi": 48.1,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.000225,
+          "vol_ratio": 0.44,
+          "patterns": [],
+          "direction": "NEUTRAL",
+          "calibrated_confidence": 65
+        },
+        "AVAXUSDT": {
+          "price": 8.917,
+          "daily_trend": "BEARISH",
+          "ema_alignment": "BEARISH",
+          "rsi": 45.44,
+          "bb_position": "MIDDLE",
+          "macd_hist": 0.017142,
+          "vol_ratio": 0.32,
+          "patterns": [],
+          "direction": "BEARISH",
+          "calibrated_confidence": 70
+        }
+      }
+    }
+  ]
+}

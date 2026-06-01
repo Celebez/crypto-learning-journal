@@ -1,0 +1,60 @@
+{
+  "updated_at": "2026-06-20T14:49:36.629541+00:00",
+  "source": "prediction_registry.json",
+  "skill_version": "v3.0",
+  "total_predictions": 176,
+  "rejected": 13,
+  "verified": 175,
+  "correct": 72,
+  "success": 20,
+  "partial_success": 52,
+  "failure": 103,
+  "expired": 0,
+  "pending": 0,
+  "overall_accuracy": 0.2629,
+  "total_pnl_pct": -36.531,
+  "avg_pnl_pct_per_trade": -0.2174,
+  "calibration_tier": "LOW",
+  "calibration_multiplier": 0.7,
+  "by_direction": {
+    "BULLISH_buy": {
+      "verified": 43,
+      "correct": 6,
+      "accuracy": 0.1395,
+      "avg_pct": -0.3634,
+      "captured_pnl": 2.9749,
+      "winning_trades": 6
+    },
+    "BEARISH_sell": {
+      "verified": 81,
+      "correct": 22,
+      "accuracy": 0.2716,
+      "avg_pct": -0.2419,
+      "captured_pnl": -59.5961,
+      "winning_trades": 22
+    },
+    "NEUTRAL_hold": {
+      "verified": 27,
+      "correct": 27,
+      "accuracy": 1.0,
+      "avg_pct": -0.0331
+    }
+  },
+  "by_confidence_tier": {
+    "HIGH": {
+      "verified": 9,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "MEDIUM": {
+      "verified": 75,
+      "correct": 16,
+      "accuracy": 0.2133
+    },
+    "LOW": {
+      "verified": 58,
+      "correct": 37,
+      "accuracy": 0.6379
+    }
+  }
+}
