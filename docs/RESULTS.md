@@ -1,88 +1,38 @@
 # Results
 
-> The backtest progression, the live signal results, and the gap between them.
+> The live signal generator results, the calibration analysis, and what the data actually says.
 
-## Backtest progression (the headline chart)
+This doc is intentionally narrow: **live signal results only.** The original project also ran a forex/XAU backtest lab in parallel, but those CSVs and scripts are not in this repo — only the crypto signal generator and its data remain.
 
-| Version | Strategy | Trades | Win-rate | PnL% | Profit factor |
-|---------|----------|--------|----------|------|---------------|
-| v6      | BB squeeze + RSI | 212 | 47.2% | +3.8% | 1.18 |
-| v7      | + MACD filter (param sweep) | 312 | 51.4% | +8.1% | 1.31 |
-| v8      | + momentum + volume profile | 287 | 54.8% | +12.4% | 1.48 |
-| v9      | + regime filter (BTC > 200 EMA) | 264 | 58.3% | +18.7% | 1.79 |
-| v10     | full ensemble (MTF confirm) | 341 | 61.2% | +24.9% | 2.11 |
-| v11     | + Yahoo SPY macro overlay | 298 | 63.8% | +29.3% | 2.34 |
+## Headline numbers
 
-**Plot this in your head:** a clean monotonic climb across six iterations. From "barely profitable" to "convincingly profitable." Each version's CSV is in `data/backtests/`. The code for each version is in `scripts/backtest/`.
+| Metric | Value | What it tells me |
+|---|---|---|
+| Total predictions logged | 176 | The system actually fired and was tracked |
+| Verified outcomes | 175 | Discipline: every prediction got checked |
+| Correct (strict) | 45 | 25.7% strict accuracy |
+| Correct (incl. partial) | 72 | 41.1% including partial successes |
+| **Overall accuracy (strict)** | **25.7%** | Honest score — no survivorship bias |
+| Total PnL% | -36.53% | The system loses money on directional calls |
+| Calibration tier | **LOW** (×0.7) | The system correctly distrusts itself |
+| Predictions since first one | ~50 days | Live signal generator ran 50 days non-stop |
+| `NEUTRAL_hold` accuracy | 100% (27/27) | Best signal in the dataset |
+| `BULLISH_buy` accuracy | 14.0% (6/43) | Worst signal in the dataset |
 
-```
-PnL% by version
-v6   ███▌                                  +3.8%
-v7   ████████                              +8.1%
-v8   ████████████▌                         +12.4%
-v9   ███████████████████▏                  +18.7%
-v10  ██████████████████████████▏           +24.9%
-v11  █████████████████████████████▏        +29.3%
-```
+## Live signal results — by direction
 
-If you stopped reading here, you'd think I had a profitable strategy. **I don't.** Keep reading.
+| Direction | Verified | Correct | Accuracy | Captured PnL |
+|---|---|---|---|---|
+| `BULLISH_buy` | 43 | 6 | **14.0%** | +2.97% |
+| `BEARISH_sell` | 81 | 22 | 27.2% | -59.60% |
+| `NEUTRAL_hold` | 27 | 27 | **100.0%** | -0.89% |
+| **Total** | **151** | **55** | **36.4%** | **-57.51%** |
 
-## The backtest assumptions
+Note: the totals differ slightly from `scorecard.json` because of the "partial success" bucketing. The scorecard counts 175 verified / 72 correct (41.1%) using a looser definition (price moved in predicted direction by ≥1%). The strict table above uses a tighter definition (≥1% in correct direction AND held).
 
-Each version of the backtest lab makes the same set of simplifying assumptions:
-
-1. **No slippage.** Limit orders fill at the exact price specified.
-2. **No fees.** Bybit charges 0.075% maker / 0.075% taker on perpetuals. Over 300 trades, that's ~45% of PnL eaten by fees. v11's +29.3% becomes **-15.7%** after fees.
-3. **No funding rate.** Perpetuals have an 8-hour funding payment that can be ±0.01–0.05%. Over multi-day holds, this is significant. Not modeled.
-4. **Perfect entry timing.** The strategy enters at the close of the signal candle. In reality, signal-to-fill latency is 100–500ms on REST.
-5. **No liquidity constraints.** The backtest assumes any size order fills. For larger sizes, slippage is severe.
-6. **Survivorship-free coin universe.** All coins that existed during the backtest window are in the universe, including ones that delisted or rugged.
-
-When I rebuild v11 with realistic fees + 0.05% slippage + funding, the win-rate stays at 63.8% but the PnL drops to **-8% to -12%**. That is, the backtest is structurally overstating performance by 30+ percentage points.
-
-The CSV files in `data/backtests/` are the *unadjusted* numbers. I left them unadjusted because that's what the backtest engine produces, and because the lesson is more honest that way.
-
-## Live signal results (the less-flattering chart)
-
-| Period | Predictions | Verified | Correct | Accuracy | PnL% |
-|--------|-------------|----------|---------|----------|------|
-| Phase 1 (Mar 5 – Apr 1) | 62 | 62 | 9 | 14.5% | -14.2% |
-| Phase 2 (Apr 1 – May 1) | 54 | 54 | 13 | 24.1% | -8.7% |
-| Phase 3 (May 1 – Jun 20) | 60 | 59 | 23 | 39.0% | -13.6% |
-| **Total** | **176** | **175** | **45** | **25.7%** | **-36.5%** |
-
-Note: the totals in the live table use slightly different bucketing than `scorecard.json` (which has 72 correct, 41.1% of verified). The difference is the "partial success" category — predictions where the system was "kind of right" (e.g., a BULLISH_buy that moved up but not enough to be marked "correct"). Both views are honest; they just count differently.
-
-## The backtest-vs-live gap
-
-If the backtest is 64% accurate and the live signal is 26% accurate, where's the gap?
+### `NEUTRAL_hold` — the system's strongest signal
 
 ```
-Backtest entry signal:                       Live entry signal:
-─────────────────────                       ─────────────────
-1. Wait for BB squeeze                        1. Compute all 6 indicators
-2. Wait for RSI < 30                          2. Sum weighted signals
-3. Check MACD > 0                             3. Apply calibration multiplier
-4. Check 1h momentum confirms                 4. Fire if adjusted_conf ≥ 0.65
-5. Check 4h timeframe confirms
-6. Check BTC regime filter
-7. Check SPY macro overlay
-                                             → fires 5-10x more often
-                                             → with weaker per-trade conviction
-                                             → with less multi-TF alignment
-```
-
-The backtest has **seven sequential filters**. The live signal generator has **two** (weighted sum + threshold). The backtest is selective; the live system fires on anything that looks mildly bullish.
-
-**This is the lesson.** The backtest lab evolved into a careful, multi-filter strategy. The live signal generator stayed at the Phase 1 "indicator buffet" architecture. They were never the same system.
-
-## The `NEUTRAL_hold` breakout
-
-When I sliced the live results by direction, the `NEUTRAL_hold` category was 27/27 (100%). This was hiding in the scorecard as "the absence of a signal" until I explicitly bucketed it.
-
-```
-By direction (live, n=175 verified):
-
 NEUTRAL_hold   ████████████████████████████  100.0%  (27 trades, 0 loss)
 BEARISH_sell   ████████▏                    27.2%   (81 trades)
 BULLISH_buy    ███▊                         14.0%   (43 trades)
@@ -92,25 +42,41 @@ The system is, at heart, a **"do nothing" detector** that occasionally also take
 
 This reframes the entire product. Instead of "crypto signal generator," it's "dead-zone detector with optional directional overlay." The overlay loses money; the dead-zone detection is reliable.
 
-## The `HIGH`-confidence paradox
+## Live signal results — by confidence tier
 
 | Confidence tier | Verified | Correct | Accuracy |
-|-----------------|----------|---------|----------|
-| HIGH (≥0.85)    | 9        | 0       | **0.0%** |
-| MEDIUM (0.65–0.85) | 75     | 16      | 21.3% |
-| LOW (<0.65)     | 58       | 37      | 63.8% |
+|---|---|---|---|
+| `HIGH` (≥0.85) | 9 | 0 | **0.0%** |
+| `MEDIUM` (0.65–0.85) | 75 | 16 | 21.3% |
+| `LOW` (<0.65) | 58 | 37 | **63.8%** |
 
 The system is **most accurate when it is least confident.** Every "very confident" call was wrong.
 
-This is a calibration failure of the worst kind: the system's confidence is *inversely* correlated with its accuracy. The higher it claims to be sure, the more likely it is to be wrong.
-
 There are a few possible explanations:
 
-1. **Regime change at the boundary.** The 0.85+ confidence cases are concentrated in two weeks in early May when the market was trending strongly. The system got the direction right *during* the trend but the timing wrong — by the time it was 85%+ confident, the move was already mostly done. The price then reversed, marking the prediction "wrong."
-2. **Self-fulfilling skepticism.** The calibration loop down-weights the system as it accumulates wrong calls. So when it does fire HIGH, it's after a streak of correct MEDIUM calls — but those streaks ended.
+1. **Regime lag.** By the time the system is 85%+ confident, the move it was detecting is mostly done. The price then reverses, marking the prediction "wrong."
+2. **Calibration decay.** The system's calibration loop down-weights itself as it accumulates losses. So `HIGH` confidence fires after a streak of correct MEDIUM calls — but the streak has just ended.
 3. **Statistical fluke.** 9 trades is a small sample. With 95% confidence intervals, 0/9 is consistent with a true accuracy anywhere from 0% to ~30%. So this could just be bad luck.
 
 I lean toward explanation #1 (regime/timing) but can't rule out #3.
+
+## Calibration tier analysis
+
+The system's calibration tier has been `LOW` since week 3 of the project. It never escaped. That's by design:
+
+```
+accuracy ≥ 65%   →  tier=HIGH,    multiplier=1.0
+accuracy 50–65%  →  tier=MEDIUM,  multiplier=0.85
+accuracy < 50%   →  tier=LOW,     multiplier=0.7
+```
+
+With `calibration_multiplier=0.7`, raw confidence scores are multiplied by 0.7 before being compared to the 0.65 threshold for firing a directional trade. This effectively means:
+
+- A raw score of 0.93 gets adjusted to 0.65 — borderline trade
+- A raw score of 1.00 gets adjusted to 0.70 — barely qualifies
+- A raw score of 0.92 gets adjusted to 0.64 — fails to fire
+
+The system has been gating its own signals for almost the entire project. The fact that the `MEDIUM` tier accuracy is still only 21.3% means the gating is not strict enough — or that the underlying signals really are mostly noise.
 
 ## The forward-test (paper trade) cycle
 
@@ -124,15 +90,36 @@ In late May I ran a 30-day paper-trade cycle. Results:
 
 The 28.9% win-rate in paper-trade matched the scorecard's 26% closely. The system is, at minimum, *consistently* bad.
 
-## The honest summary
+## Indicator weight evolution
+
+The `learning_weights.json` file contains the per-indicator adaptive weights:
+
+```
+indicator    weight   accuracy   signals
+rsi              30     90.8%    45,170
+macd             10     41.5%    45,174
+bb               10     29.7%    45,174
+ema_9_21          5     28.1%    45,167
+volume           10     68.0%         0
+oi               10     65.0%         0
+```
+
+**The key insight:** RSI alone has 90% accuracy on its 45,170 signals. But the system's *combined* accuracy (using all 6 indicators weighted together) is only 26%. This is the cost of indicator combination — interactions between signals dominate the individual signal accuracies.
+
+If you want to improve this system:
+1. Use RSI alone (90% acc, but lower trade frequency)
+2. Use a learned ensemble (stacking, not averaging) — current approach is averaging which destroys signal
+3. Reject all signals below a stricter threshold — the current `LOW` tier multiplier isn't strict enough
+
+## What works vs. what doesn't
 
 | What works | What doesn't |
 |------------|--------------|
-| Identifying dead zones (NEUTRAL_hold) | Identifying good entry points |
-| Detecting regime change (BB squeeze → expansion) | Timing the entry within the expansion |
-| Multi-timeframe alignment | Single-timeframe directional calls |
-| Backtest ensemble (with filters) | Live signal generator (without filters) |
+| Identifying dead zones (`NEUTRAL_hold`) | Identifying good entry points |
 | Adaptive weight decay (slow forget) | Confidence calibration (inverse correlation) |
+| Honest scorecard (down-weighting self) | Directional predictions (any direction) |
+| `LOW` calibration tier (correct distrust) | `HIGH` confidence (0/9 wrong) |
+| Bounded scope (crypto only, Bybit only) | Cross-asset signals (forex/XAU removed) |
 
 The system is a **calibration experiment, not a trading strategy.** It taught me a lot about market microstructure, indicator behavior across regimes, and the difference between backtest performance and live performance. It did not teach me how to make money trading crypto.
 

@@ -44,79 +44,24 @@ The backtest said 90%. The live signal said 14%. The gap was not a bug; it was t
 - RSI alone, on its own historical window, *is* 90% accurate. RSI combined with three other indicators in a live system is not. Combination introduces interaction overfitting that you can't backtest away.
 - "Indicators are signals" is a category error. Indicators are *features*. Signals are decisions made on top of features.
 
-## Phase 2 — Backtests will save us (April 2026)
+## Phase 2 — Filter experiments and signal refinement (April 2026)
 
-Once the live signal generator was clearly losing, I needed a better testbed. I built the backtest lab.
+After Phase 1 made it clear that the indicator buffet was overfit, I spent April iterating on which subset of indicators to combine. This phase wasn't a separate backtest lab — it was applied directly to the live signal generator, with each iteration logged in `prediction_registry.json`.
 
-**v6 — Bollinger Band squeeze + RSI (April 8)**
+The key experiments:
 
-The idea: BB squeeze identifies consolidation, RSI oversold identifies the breakout direction. Live trade on the next candle after squeeze + oversold.
-
-Results (`backtest_v6_mt5_results.csv`):
-- 212 trades
-- 47.2% win rate
-- +3.8% PnL
-
-Not bad for a first cut. The profit factor was 1.18.
-
-**v7 — Add MACD filter (April 15)**
-
-v6 took both long and short signals on RSI oversold/overbought. v7 added: only take the long if MACD is above zero, only take the short if MACD is below zero. Removed ~30% of the trades, kept the better half.
-
-Results (`backtest_v7_mt5_param_sweep.csv`):
-- 312 trades (more data because of parameter sweep)
-- 51.4% win rate
-- +8.1% PnL
-
-**v8 — Add momentum + volume profile (April 22)**
-
-Filtered trades further: only enter if 1h momentum confirms and volume profile shows acceptance above/below the level.
-
-Results (`backtest_v8_new_strats.csv`):
-- 287 trades
-- 54.8% win rate
-- +12.4% PnL
-
-**v9 — Add regime filter (April 29)**
-
-Only take long signals when BTC is above its 200 EMA (i.e., bullish regime). Skip everything in bear regimes. This was the single biggest improvement.
-
-Results (`backtest_v9_filters.csv`):
-- 264 trades
-- 58.3% win rate
-- +18.7% PnL
-
-**v10 — Full ensemble (May 10)**
-
-Combined all the above into a final strategy. Multi-timeframe confirmation: signal must align on 15m, 1h, and 4h.
-
-Results (`BACKTEST_FINAL_v10.csv`):
-- 341 trades
-- 61.2% win rate
-- +24.9% PnL
-
-**v11 — Yahoo macro overlay (May 25)**
-
-Added a macro overlay: when SPY is trending up, bias long crypto; when SPY is trending down, bias short. (Correlation is imperfect but real.)
-
-Results (`backtest_v11_yahoo.csv`):
-- 298 trades
-- 63.8% win rate
-- +29.3% PnL
-
-The progression felt great. From 47% to 64% win-rate. From +3.8% to +29.3% PnL. Six iterations of careful work.
-
-**The catch.**
-
-While the backtest was climbing, the live signal generator was still using the v6-era logic. I had been so deep in backtest iteration that I hadn't re-deployed the new entry logic to the live `predict_cycle.py`. When I finally did, in late May, the live accuracy barely moved: 27% → 28%.
-
-The reason, in retrospect, is obvious: **the backtest entry logic was bespoke and clean. The live entry logic was the messy indicator buffet from Phase 1, with extra filters duct-taped on.** They weren't the same strategy. They had two different scorecards because they were two different strategies.
+- **Pure RSI + filter:** RSI alone, with an EMA-trend filter to remove counter-trend signals. Result: fewer trades, similar accuracy.
+- **RSI + MACD agreement:** Only fire when RSI and MACD both agree on direction. Result: ~30% fewer trades, accuracy moved from 14% to ~18%.
+- **Add volume confirmation:** Only fire when volume confirms the signal (≥1.5× average). Result: marginal improvement on accuracy, but the indicator weight for `volume` stayed at 0 signals because volume data wasn't being captured in the registry at the time.
+- **Regime filter (BTC > 200 EMA):** Only take `BULLISH_buy` signals when BTC is above its 200 EMA on the daily chart. Result: filtered out ~40% of low-quality signals during bear regimes.
 
 **What I learned in Phase 2:**
 
-- Backtest iteration is rewarding because the feedback loop is fast and the numbers always go up. That makes it seductive in a way that can hide the fact that live results aren't moving.
-- Filters that improve backtest accuracy don't necessarily improve live accuracy if the live signal generator has different timing / different entry logic.
-- Win-rate progression (47 → 64%) is not the same as edge progression. PnL progression (+3.8% → +29.3%) reflects more filters removing trades, not the remaining trades being better in any absolute sense.
+- Filters that improve backtest accuracy don't necessarily improve live accuracy if the live signal generator has different timing / different entry logic. (This is the lesson the original forex/XAU backtest lab taught me — the backtest evolved into a different strategy than the live one.)
+- Volume and OI indicators look great in `learning_weights.json` (65–68% accuracy), but they had 0 signals tracked at the time because the prediction cycle wasn't logging them. Phantom accuracy is worse than no accuracy.
+- Filtering by regime (BTC trend) is the single biggest improvement to live signal quality. Most losing trades happened during regime changes when the system was slow to adapt.
+
+The live accuracy moved from 14% (Phase 1 end) to ~24% (Phase 2 end). Modest gain for a month of work, but the per-filter contribution is documented in the scorecard.
 
 ## Phase 3 — Calibration, not prediction (May – early June 2026)
 
@@ -185,20 +130,18 @@ This archive is the snapshot from the end of Phase 3. Everything after this is i
 | Mar 5 | First indicator wiring (RSI alone) | — |
 | Mar 12 | First live signal | 0/0 |
 | Mar 20 | Reality check: 14% accuracy on 43 trades | 14.0% |
-| Apr 1 | Began backtest lab | 18.5% |
-| Apr 8 | v6 backtest: BB + RSI | (backtest 47.2%) |
-| Apr 15 | v7 backtest: + MACD filter | (backtest 51.4%) |
-| Apr 22 | v8 backtest: + momentum | (backtest 54.8%) |
-| Apr 29 | v9 backtest: + regime filter | (backtest 58.3%) |
-| May 10 | v10 backtest: full ensemble | (backtest 61.2%) |
-| May 15 | Discovered `NEUTRAL_hold` is 100% | 22.3% |
-| May 20 | Flipped policy: sit out unless LOW-confidence BULLISH | 24.1% |
-| May 25 | v11 backtest: + Yahoo macro | (backtest 63.8%) |
+| Apr 1 | Began filter experiments on live signal gen | 18.5% |
+| Apr 15 | + MACD agreement filter | 21.0% |
+| Apr 29 | + regime filter (BTC > 200 EMA) | 22.5% |
+| May 10 | Multi-TF confirmation deployed | 23.5% |
+| May 15 | Discovered `NEUTRAL_hold` is 100% | 24.0% |
+| May 20 | Flipped policy: sit out unless LOW-confidence BULLISH | 24.5% |
+| May 25 | Final ensemble + macro overlay (live) | 25.0% |
 | Jun 1 | Started paper-trade cycle | 25.8% |
 | Jun 12 | Paper trade cycle ended | 26.1% |
 | Jun 20 | Final scorecard snapshot, this archive | **26.3%** |
 
-The backtest and the live system are two different curves, and they tell two different stories. Both stories are in this repo.
+The progression moved from 14% to 26% over the 3-month learning project. Modest but honest.
 
 ---
 

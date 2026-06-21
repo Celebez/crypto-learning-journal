@@ -21,20 +21,17 @@ clj() {
             echo "├── data/"
             echo "│   ├── predictions/      # 176 predictions tracked"
             echo "│   ├── learning/         # adaptive indicator weights"
-            echo "│   ├── snapshots/        # portfolio snapshots"
-            echo "│   └── backtests/        # v6 → v11 backtest CSVs"
+            echo "│   └── snapshots/        # portfolio snapshots"
             echo "├── scripts/"
             echo "│   ├── analysis/         # hermes_crypto_analysis.py"
             echo "│   ├── bridges/          # hermes_bybit_bridge.py"
             echo "│   ├── prediction/       # predict_cycle.py + variants"
-            echo "│   ├── backtest/         # v6_mt5 → v11_yahoo"
-            echo "│   ├── improve/          # confidence / risk / calibration"
             echo "│   └── utils/            # fetch / format / verify"
             echo "├── docs/"
             echo "│   ├── JOURNEY.md        # 3-month retrospective"
             echo "│   ├── METHODOLOGY.md"
             echo "│   ├── RESULTS.md"
-            echo "│   └── archive/          # 6 historical briefs"
+            echo "│   └── archive/          # historical briefs"
             echo "└── assets/"
             echo "    └── demo.gif"
             ;;
@@ -67,16 +64,6 @@ clj() {
             echo "  ─────────────────────────────────────────"
             echo "  insight: RSI alone > 90% accurate when weighted alone;"
             echo "           combining all 6 → 26% (over-fit by interaction)"
-            ;;
-        backtest)
-            echo "  version   strategy                        win%   trades   pnl"
-            echo "  ───────   ──────────────────────────      ────   ──────   ─────"
-            echo "  v6_mt5    BB squeeze + RSI                47.2%   212     +3.8%"
-            echo "  v7_mt5    + MACD filter (param sweep)     51.4%   312     +8.1%"
-            echo "  v8_strats + momentum + volume profile    54.8%   287    +12.4%"
-            echo "  v9_filters  regime filter (BTC trend)    58.3%   264    +18.7%"
-            echo "  v10_final  full ensemble                  61.2%   341    +24.9%"
-            echo "  v11_yahoo  + yahoo macro overlay          63.8%   298    +29.3%"
             ;;
         *)
             echo "clj: unknown subcommand '$*'" >&2
@@ -114,15 +101,22 @@ echo ""
 sleep 0.4
 clj weights
 echo ""
-sleep 3.0
-
-echo "▸ Backtest progression (data/backtests/)"
+# === 4. What the system does NOT do (deliberate scope limits) ===
+echo "▸ What this system deliberately does NOT do"
 echo ""
 sleep 0.4
-clj backtest
+echo "  ✗ Position sizing        (no per-trade $ risk calc)"
+echo "  ✗ Auto-exit              (open positions need manual close)"
+echo "  ✗ Multi-exchange routing (Bybit only)"
+echo "  ✗ Forex / XAU / equities (crypto perpetuals only)"
+echo "  ✗ Margin/leverage mgmt   (assumes spot-sized positions)"
+echo "  ✓ Adaptive calibration   (self-adjusting indicator weights)"
+echo "  ✓ Honest scorecard       (down-weights the system when wrong)"
+echo "  ✓ NEUTRAL_hold detection (100% acc on 27 trades)"
 echo ""
-sleep 3.5
+sleep 2.5
 
+# === 5. How to run ===
 echo "▸ Quick start"
 echo ""
 sleep 0.5

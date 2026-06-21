@@ -35,7 +35,7 @@ cd crypto-learning-journal
 bash assets/demo.sh
 ```
 
-You'll see the repo structure, current scorecard, indicator weights, and backtest progression printed to your terminal. No API keys needed — the demo uses bash function overrides that print realistic output.
+You'll see the repo structure, current scorecard, and indicator weights printed to your terminal. No API keys needed — the demo uses bash function overrides that print realistic output.
 
 ## 🛠️ Real install (15 minutes)
 
@@ -72,14 +72,6 @@ python3 scripts/analysis/hermes_crypto_analysis.py
 ```
 
 You should see structured JSON output with market snapshots for BTCUSDT, ETHUSDT, BNBUSDT, SOLUSDT, HYPEUSDT across 15m, 1h, 4h, and daily timeframes.
-
-### Run a backtest (no live data needed)
-
-```bash
-python3 scripts/backtest/backtest_v11_yahoo.py
-```
-
-This is offline — it uses Yahoo Finance data to validate the strategy on historical candles.
 
 ---
 
@@ -151,22 +143,7 @@ Read these scripts in order:
    - Updates `learning_weights.json` (per-indicator weights)
    - Recomputes `scorecard.json` (overall accuracy)
 
-### Step 4: Compare backtest versions
-
-Open each backtest CSV in `data/backtests/` and look at how the strategy evolved:
-
-| File | Strategy | Win-rate | PnL |
-|---|---|---|---|
-| `backtest_v6_mt5_results.csv` | BB squeeze + RSI | 47.2% | +3.8% |
-| `backtest_v7_mt5_param_sweep.csv` | + MACD filter | 51.4% | +8.1% |
-| `backtest_v8_new_strats.csv` | + momentum + volume | 54.8% | +12.4% |
-| `backtest_v9_filters.csv` | + regime filter (BTC > 200 EMA) | 58.3% | +18.7% |
-| `BACKTEST_FINAL_v10.csv` | full ensemble (MTF confirm) | 61.2% | +24.9% |
-| `backtest_v11_yahoo.csv` | + Yahoo SPY macro overlay | 63.8% | +29.3% |
-
-**Lesson 4:** Each version is preserved with both code (`scripts/backtest/backtest_vN_*.py`) and CSV output. Read them in order to see how filters were layered. **But** remember the backtest assumes zero fees, zero slippage, and zero funding rate — see [`docs/RESULTS.md`](docs/RESULTS.md) for the realistic PnL calculation.
-
-### Step 5: Read the calibration engine
+### Step 4: Trace the calibration engine
 
 The **`data/learning/learning_engine.py`** file (~430 lines) is the heart of the adaptive system. Key function:
 
@@ -184,9 +161,9 @@ def update_weights(registry, current_weights, alpha=0.05, beta=0.03):
     return new_weights
 ```
 
-**Lesson 5:** Notice `alpha=0.05, beta=0.03` — the system is **asymmetric**. It takes 5 successful predictions to add 0.25 of trust, but only 3 failed predictions to remove 0.09. This is intentional: indicators have regime-specific accuracy, and you don't want to chase the most-recent-winner.
+**Lesson 4:** Notice `alpha=0.05, beta=0.03` — the system is **asymmetric**. It takes 5 successful predictions to add 0.25 of trust, but only 3 failed predictions to remove 0.09. This is intentional: indicators have regime-specific accuracy, and you don't want to chase the most-recent-winner.
 
-### Step 6: Modify and experiment
+### Step 5: Modify and experiment
 
 Once you've read the above, try modifying the system:
 
@@ -215,26 +192,23 @@ crypto-learning-journal/
 ├── data/                             # all raw artifacts, frozen as-is
 │   ├── predictions/                  #   every signal the system ever fired
 │   ├── learning/                     #   what the system learned from mistakes
-│   ├── snapshots/                    #   portfolio snapshots over time
-│   └── backtests/                    #   v6 → v11 backtest CSVs
+│   └── snapshots/                    #   portfolio snapshots over time
 │
 ├── scripts/                          # the actual code, organized by role
 │   ├── analysis/                     #   market analysis & signal generation
 │   ├── bridges/                      #   exchange connectivity (Bybit)
 │   ├── prediction/                   #   prediction-cycle scripts
-│   ├── backtest/                     #   v6 → v11 backtest lab
-│   ├── improve/                      #   targeted improvements
 │   └── utils/                        #   supporting utilities
 │
 ├── docs/                             # narrative documentation
 │   ├── JOURNEY.md                    #   3-month retrospective, day-by-day
 │   ├── METHODOLOGY.md                #   how the system actually works
-│   ├── RESULTS.md                    #   backtest progression, deep analysis
-│   ├── PITFALLS.md                   #   15 failure modes documented
+│   ├── RESULTS.md                    #   live signal results, deep analysis
+│   ├── PITFALLS.md                   #   failure modes documented
 │   └── archive/                      #   historical analysis briefs
 │
 └── assets/
-    ├── demo.gif                      #   11-second terminal demo
+    ├── demo.gif                      #   10-second terminal demo
     └── demo.sh                       #   source script for regenerating demo
 ```
 
@@ -247,7 +221,6 @@ crypto-learning-journal/
 | Trace signal generation | `scripts/analysis/hermes_crypto_analysis.py` |
 | Trace prediction fire | `scripts/prediction/predict_cycle.py` |
 | Trace outcome verification | `scripts/utils/verify_and_learn.py` |
-| Run a backtest | `scripts/backtest/backtest_v11_yahoo.py` |
 | Modify the calibration loop | `data/learning/learning_engine.py` |
 | Learn from mistakes | `docs/PITFALLS.md` |
 | Read the full story | `docs/JOURNEY.md` |
@@ -281,9 +254,15 @@ It's the system's self-assessed reliability:
 
 This project's calibration tier has been `LOW` since week 3. That's a feature, not a bug.
 
-**Q: How do I run a backtest on my own data?**
+**Q: Can I run a backtest against historical crypto data?**
 
-Edit `scripts/backtest/backtest_v11_yahoo.py` — the `fetch_yahoo_data()` function controls the data source. Replace it with your own data loader (CSV, exchange API, etc.) and the rest of the script will work as-is.
+This repo doesn't ship a backtest lab — only the live signal generator + learning loop. The original backtest lab was on forex/XAU data (kept separate, not in this repo). To backtest crypto strategies, you'd need to:
+1. Fetch historical OHLCV from Bybit or another exchange
+2. Build a `Candle` list matching `data/learning/learning_engine.py` interface
+3. Run each prediction through the engine's calibration logic
+4. Compare predicted direction vs actual outcome
+
+This is left as an exercise for the reader.
 
 **Q: What's `NEUTRAL_hold` and why is it 100% accurate?**
 
@@ -299,8 +278,8 @@ You can, but: (1) you need live Bybit API keys, (2) you should paper-trade for a
 
 - **[docs/JOURNEY.md](docs/JOURNEY.md)** — 3-month retrospective, day-by-day
 - **[docs/METHODOLOGY.md](docs/METHODOLOGY.md)** — how the system actually works (data flow, indicator math, calibration loop)
-- **[docs/RESULTS.md](docs/RESULTS.md)** — backtest progression and the backtest-vs-live gap
-- **[docs/PITFALLS.md](docs/PITFALLS.md)** — 15 failure modes documented for the next person
+- **[docs/RESULTS.md](docs/RESULTS.md)** — live signal results, by-direction breakdown, calibration tier analysis
+- **[docs/PITFALLS.md](docs/PITFALLS.md)** — failure modes documented for the next person
 - **[docs/archive/](docs/archive/)** — historical analysis briefs
 
 ## 📜 License

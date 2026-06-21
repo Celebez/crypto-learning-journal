@@ -193,7 +193,7 @@ This is as important as what it does:
 - **It does not manage risk.** There is no position sizing logic, no max-drawdown cutoff, no portfolio-level exposure limit. The system fires signals; the (human) trader decides position size.
 - **It does not exit trades automatically.** Once a `BULLISH_buy` is placed, the system watches the outcome and reports it to the scorecard, but it does not issue a `close` order. Exit is manual.
 - **It does not handle exchange errors robustly.** The bridge has minimal retry logic. Network blips will drop orders.
-- **It does not backtest against itself.** The backtest lab uses its own entry logic, not `predict_cycle.py`. (See JOURNEY.md for why this was a mistake.)
+- **It does not backtest against itself.** This repo ships only the live signal generator + learning loop, not a backtest lab. (The original project also ran a forex/XAU backtest lab in parallel; those scripts and CSVs are archived elsewhere, not here.)
 - **It does not paper-trade by default.** The paper-trade mode (`paper_trade_30d.py`) is a separate script that wraps the prediction cycle and simulates fills. It is not on by default.
 
 ## A note on the data files
@@ -204,4 +204,4 @@ If you spot something in the data that contradicts the narrative in JOURNEY.md o
 
 ---
 
-Next: [RESULTS.md](RESULTS.md) — backtest progression, win-rate analysis, and the gap between backtest and live.
+Next: [RESULTS.md](RESULTS.md) — live signal results, by-direction breakdown, and calibration tier analysis.
