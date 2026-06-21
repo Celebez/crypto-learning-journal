@@ -146,13 +146,13 @@ This is the most practically useful doc in the repo. The narrative in `JOURNEY.m
 
 **Cost:** This consolidation effort itself — about a day to merge, organize, scrub, document, and publish.
 
-## 15. The "cross-asset contamination" trap
+## 15. The "scope drift" trap
 
-**Symptom:** The original codex-trading repo contained both forex/XAU backtests AND crypto live signals. Mixing them in one repo made the narrative confusing — the backtests were on EURUSD/GBPUSD/XAUUSD, the live signals were on BTCUSDT/ETHUSDT. Anyone reading the repo would assume they were the same system.
+**Symptom:** The original codex-trading repo contained a parallel backtest lab on a different asset class (the same indicators, different symbols). Mixing them in one repo made the narrative confusing — anyone reading would assume the live crypto signal generator and the cross-asset backtest were the same system, when in practice they shared almost no code.
 
-**Cause:** "It's all trading, why separate it?" was the original reasoning. In practice, the backtest lab and the live signal generator had nothing in common except the indicator names.
+**Cause:** "It's all trading, why separate it?" was the original reasoning. In practice, a backtest lab and a live signal generator have nothing in common except the indicator names. Different data sources, different timing, different output.
 
-**Fix:** This crypto-only repo. The forex/XAU backtest scripts and CSVs are removed. If you want the cross-asset version, it's a separate workstream.
+**Fix:** This crypto-only repo. The cross-asset backtest scripts and CSVs are removed. If you want a different asset class, that's a separate workstream with a separate repo.
 
 **Cost:** ~1 day to audit, remove, and re-document. But the cleanup made the repo's purpose unambiguous.
 

@@ -108,7 +108,7 @@ sleep 0.4
 echo "  ✗ Position sizing        (no per-trade $ risk calc)"
 echo "  ✗ Auto-exit              (open positions need manual close)"
 echo "  ✗ Multi-exchange routing (Bybit only)"
-echo "  ✗ Forex / XAU / equities (crypto perpetuals only)"
+echo "  ✗ Equities / commodities (crypto perpetuals only)"
 echo "  ✗ Margin/leverage mgmt   (assumes spot-sized positions)"
 echo "  ✓ Adaptive calibration   (self-adjusting indicator weights)"
 echo "  ✓ Honest scorecard       (down-weights the system when wrong)"

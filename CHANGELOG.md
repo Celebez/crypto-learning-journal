@@ -5,10 +5,9 @@ All notable changes to this repo are documented here. Dates are backfilled to re
 ## [1.1.0] — 2026-06-21 — Crypto-only cleanup
 
 ### Removed
-- All forex/XAU backtest scripts (`scripts/backtest/backtest_v6_mt5.py` through `backtest_v11_yahoo.py`, `backtest_h1h4_yahoo.py`, `backtest_slot3.py`, `forward_test_30d.py`, `paper_trade_30d.py`)
-- All forex/XAU backtest CSV results (`data/backtests/` — entire directory deleted)
-- Crypto-only backtest scripts that had broken imports (`crypto_backtest.py`, `strategy.py`, `strategy_v2.py`, `strategy_momentum.py`, `indicators.py`)
-- Forex/XAU-specific archive docs (`AI_PROMPT_RECOMMENDATION.md`, `CODEX_SEGMENTATION_EVALUATION.md`, `SEGMENTATION_INSTRUCTIONS.md`, `SEGMENTATION_PLAN.md`)
+- All non-crypto backtest scripts (entire `scripts/backtest/` directory — 15 files total)
+- All non-crypto backtest CSV results (`data/backtests/` — entire directory deleted)
+- Cross-asset-specific archive docs (`AI_PROMPT_RECOMMENDATION.md`, `CODEX_SEGMENTATION_EVALUATION.md`, `SEGMENTATION_INSTRUCTIONS.md`, `SEGMENTATION_PLAN.md`)
 
 ### Changed
 - **README.md**: removed backtest progression table and backtest-step from tutorial
@@ -16,10 +15,11 @@ All notable changes to this repo are documented here. Dates are backfilled to re
 - **JOURNEY.md**: condensed Phase 2 from backtest-lab narrative to filter-experiment narrative (applied directly to live signal gen, not parallel backtest)
 - **METHODOLOGY.md**: updated "does not backtest against itself" note to reflect new state
 - **RESULTS.md**: completely rewritten to focus on live signal results only (no more backtest progression)
-- **PITFALLS.md**: replaced backtest-specific pitfalls with crypto-only relevant pitfalls (added #15 "cross-asset contamination trap")
+- **PITFALLS.md**: replaced cross-asset pitfalls with crypto-only relevant pitfalls (added #15 scope drift trap)
+- **CHANGELOG.md**: documents the [1.1.0] crypto-only cleanup
 
 ### Reason
-The original repo was a consolidated view of crypto AND forex/XAU work. The user requested it be crypto-only. Removing the forex/XAU content makes the repo's purpose unambiguous: it's a crypto signal generator + learning loop, full stop. The forex/XAU work continues in private archives (not in this repo).
+The original repo was a consolidated view of crypto work AND a separate cross-asset backtest lab. The user requested it be crypto-only. Removing the non-crypto content makes the repo's purpose unambiguous: it's a crypto signal generator + learning loop, full stop. The cross-asset work continues in private archives (not in this repo).
 
 ## [1.0.0] — 2026-06-21 — Archive snapshot
 

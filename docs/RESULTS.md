@@ -2,7 +2,7 @@
 
 > The live signal generator results, the calibration analysis, and what the data actually says.
 
-This doc is intentionally narrow: **live signal results only.** The original project also ran a forex/XAU backtest lab in parallel, but those CSVs and scripts are not in this repo — only the crypto signal generator and its data remain.
+This doc is intentionally narrow: **live signal results only.** The original project also ran a parallel backtest lab for non-crypto assets, but those CSVs and scripts are not in this repo — only the crypto signal generator and its data remain.
 
 ## Headline numbers
 
@@ -119,7 +119,7 @@ If you want to improve this system:
 | Adaptive weight decay (slow forget) | Confidence calibration (inverse correlation) |
 | Honest scorecard (down-weighting self) | Directional predictions (any direction) |
 | `LOW` calibration tier (correct distrust) | `HIGH` confidence (0/9 wrong) |
-| Bounded scope (crypto only, Bybit only) | Cross-asset signals (forex/XAU removed) |
+| Bounded scope (crypto only, Bybit only) | Mixed-asset signals (cross-asset removed) |
 
 The system is a **calibration experiment, not a trading strategy.** It taught me a lot about market microstructure, indicator behavior across regimes, and the difference between backtest performance and live performance. It did not teach me how to make money trading crypto.
 

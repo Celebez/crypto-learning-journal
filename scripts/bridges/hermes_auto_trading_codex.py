@@ -134,8 +134,6 @@ RULES = {
         "exclude": [
             # Stablecoins (zero movement, cannot profit)
             "USDCUSDT", "USDEUSDT", "RLUSDUSDT",
-            # Gold-backed (not crypto, wrong indicators)
-            "PAXGUSDT", "XAUTUSDT",
             # Tokenized stocks/ETFs (not crypto)
             "AAPLUSDT", "AMZNUSDT", "COINUSDT", "EWJUSDT", "GOOGLUSDT",
             "HYUNDAIUSDT", "IWMUSDT", "METAUSDT", "MSFTUSDT", "MUUSDT",

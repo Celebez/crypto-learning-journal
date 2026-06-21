@@ -4,11 +4,13 @@
 
 This is the long version. The README gives you the headlines; this gives you the texture.
 
-## Prologue — Why I started (late February 2026)
+## Prologue — Why I started (early 2026, after 4+ years of crypto trading)
 
-I had been trading crypto casually for about a year. Mostly buys on Coinbase, held for weeks or months, occasionally sold into pumps. The whole "HODL" mindset. My total return was positive because I bought BTC at $30k and ETH at $1.6k in 2023, not because I had any skill.
+I've been trading crypto since **2021**. Started with spot buys on **Binance**, then moved into **Coinbase** for the regulated UX, and eventually settled into **Bybit** for perpetuals and derivatives. The whole journey — wins, losses, bad entries, late exits — is documented on my X timeline: **[https://x.com/0xCelebez](https://x.com/0xCelebez)**.
 
-In February I started reading about quantitative trading. The argument that hooked me was:
+Over those four years I did everything wrong at least once: FOMO'd into tops, panic-sold bottoms, over-traded chop, under-traded trends. The total return was positive mostly because I bought BTC and ETH early enough — not because I had any skill.
+
+In early 2026 I started reading about quantitative trading. The argument that hooked me was:
 
 > "If you can't articulate *exactly* why you're entering a trade, you're gambling, not trading."
 
@@ -57,7 +59,7 @@ The key experiments:
 
 **What I learned in Phase 2:**
 
-- Filters that improve backtest accuracy don't necessarily improve live accuracy if the live signal generator has different timing / different entry logic. (This is the lesson the original forex/XAU backtest lab taught me — the backtest evolved into a different strategy than the live one.)
+- Filters that improve backtest accuracy don't necessarily improve live accuracy if the live signal generator has different timing / different entry logic. (This is the lesson the original cross-asset backtest lab taught me — the parallel backtest evolved into a different strategy than the live one.)
 - Volume and OI indicators look great in `learning_weights.json` (65–68% accuracy), but they had 0 signals tracked at the time because the prediction cycle wasn't logging them. Phantom accuracy is worse than no accuracy.
 - Filtering by regime (BTC trend) is the single biggest improvement to live signal quality. Most losing trades happened during regime changes when the system was slow to adapt.
 

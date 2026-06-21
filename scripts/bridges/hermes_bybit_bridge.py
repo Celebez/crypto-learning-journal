@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Hermes Bybit Bridge - Trading via Bybit Demo API
-Menggantikan MT5 + EA + Wine sepenuhnya
+
+Direct REST wrapper for Bybit unified trading API.
+Demo/testnet only by default — set BYBIT_DEMO=false for live.
 """
 from pybit.unified_trading import HTTP
 import json, os, time

@@ -256,7 +256,7 @@ This project's calibration tier has been `LOW` since week 3. That's a feature, n
 
 **Q: Can I run a backtest against historical crypto data?**
 
-This repo doesn't ship a backtest lab — only the live signal generator + learning loop. The original backtest lab was on forex/XAU data (kept separate, not in this repo). To backtest crypto strategies, you'd need to:
+This repo doesn't ship a backtest lab — only the live signal generator + learning loop. The original project had a parallel backtest lab for non-crypto assets (kept in private archives, not here). To backtest crypto strategies, you'd need to:
 1. Fetch historical OHLCV from Bybit or another exchange
 2. Build a `Candle` list matching `data/learning/learning_engine.py` interface
 3. Run each prediction through the engine's calibration logic
@@ -285,6 +285,13 @@ You can, but: (1) you need live Bybit API keys, (2) you should paper-trade for a
 ## 📜 License
 
 MIT — see [LICENSE](LICENSE). Do whatever you want with the code; cite the source if it helps you.
+
+## 👤 Author
+
+**Celebez** — trading crypto since 2021 across Binance, Coinbase, and Bybit. This repo documents one specific 3-month learning arc out of a longer journey.
+
+- 🐦 X (Twitter): **[https://x.com/0xCelebez](https://x.com/0xCelebez)** — daily trades, learnings, and self-roasts
+- 📦 GitHub: [github.com/Celebez](https://github.com/Celebez)
 
 ## Topics
 
