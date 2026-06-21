@@ -1,7 +1,7 @@
 """
 Telegram formatter for Mode 2 (4H full cycle) output.
 Reads from /tmp/scan_result.json (scan_and_predict_combined.py output).
-Usage: cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/format_cycle.py
+Usage: cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 /tmp/format_cycle.py
 
 Handles camelCase ticker keys (lastPrice, price24hPcnt, etc.) from Bybit v5 API.
 """

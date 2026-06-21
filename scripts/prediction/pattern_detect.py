@@ -8,13 +8,13 @@ Pattern detection: BB Squeeze, EMA Cross, RSI Overbought/Oversold, Volume Expans
 Adaptive thresholds: per-asset from references/adaptive_thresholds.json
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 \
+  cd ~ && ~/.hermes-venv/bin/python3 \
     ~/.hermes/skills/trading/crypto_portfolio_monitor_learning/scripts/pattern_detect.py
 
 Output: JSON with portfolio state and per-asset analysis including detected patterns.
 """
 import sys, json, math, os
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 
 from hermes_bybit_bridge import session, get_balance, get_positions
 

@@ -5,7 +5,7 @@ Fetches current prices for PENDING/PREDICTED predictions, classifies outcomes,
 analyzes indicator correctness, updates learning weights.
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/verify_and_learn.py
+  cd ~ && ~/.hermes-venv/bin/python3 /tmp/verify_and_learn.py
 
 Output: JSON to stdout with verification results and updated weights.
 
@@ -20,7 +20,7 @@ import os
 import sys
 from datetime import datetime, timezone, timedelta
 
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 
 from hermes_bybit_bridge import get_price
 

@@ -12,24 +12,24 @@ The proposed success criterion of `>50% accuracy` is insufficient. Optimize for 
 
 | Module | Reuse | Required action |
 |---|---:|---|
-| [improved_confidence.py](/home/ubuntu/codex-trading/improved_confidence.py:109) | 40% | Retain directional projection and bounded scoring concept. Replace duplicated calibration logic, validate inputs, and make weights profile-driven. |
-| [improved_macd.py](/home/ubuntu/codex-trading/improved_macd.py:160) | 60% | Retain crossover classification. Replace absolute thresholds with ATR- or volatility-normalized thresholds. Remove unreachable recovery states. |
-| [improved_bb_squeeze.py](/home/ubuntu/codex-trading/improved_bb_squeeze.py:222) | 45% | Retain lifecycle concept. Fix release direction bug, stale-compression handling, percentile enforcement, and market-specific volume confirmation. |
-| [improved_calibration.py](/home/ubuntu/codex-trading/improved_calibration.py:145) | 35% | Retain Bayesian concept. Rewrite prediction lifecycle around IDs, issue-time state, idempotent resolution, persistence, and bounded windows. |
-| [improved_risk.py](/home/ubuntu/codex-trading/improved_risk.py:189) | 25% | Retain result dataclasses and high-level assessment flow. Rewrite around risk-at-stop, margin, leverage, currency exposure, symbol metadata, and marked-to-market equity. |
+| [improved_confidence.py](improved_confidence.py:109) | 40% | Retain directional projection and bounded scoring concept. Replace duplicated calibration logic, validate inputs, and make weights profile-driven. |
+| [improved_macd.py](improved_macd.py:160) | 60% | Retain crossover classification. Replace absolute thresholds with ATR- or volatility-normalized thresholds. Remove unreachable recovery states. |
+| [improved_bb_squeeze.py](improved_bb_squeeze.py:222) | 45% | Retain lifecycle concept. Fix release direction bug, stale-compression handling, percentile enforcement, and market-specific volume confirmation. |
+| [improved_calibration.py](improved_calibration.py:145) | 35% | Retain Bayesian concept. Rewrite prediction lifecycle around IDs, issue-time state, idempotent resolution, persistence, and bounded windows. |
+| [improved_risk.py](improved_risk.py:189) | 25% | Retain result dataclasses and high-level assessment flow. Rewrite around risk-at-stop, margin, leverage, currency exposure, symbol metadata, and marked-to-market equity. |
 
 The repository does **not** contain Bybit or OANDA API adapters. Those integrations must be added.
 
 ## Remaining Shared Defects
 
-1. [improved_risk.py](/home/ubuntu/codex-trading/improved_risk.py:297) conflates notional exposure with risk and margin. A read-only probe sized a BTC trade to `$30,633` notional on a `$10,000` account while the generic cap is 10%. Track risk-at-stop, gross notional, margin used, leverage, and liquidation buffer separately.
-2. [improved_risk.py](/home/ubuntu/codex-trading/improved_risk.py:365) ignores proposed trade size and position direction during correlation checks. Forex additionally requires currency-level exposure buckets.
-3. [improved_risk.py](/home/ubuntu/codex-trading/improved_risk.py:411) uses balance instead of marked-to-market equity and has no daily-loss control.
-4. [improved_risk.py](/home/ubuntu/codex-trading/improved_risk.py:278) accepts negative ATR multipliers; [check_exposure_limits()](/home/ubuntu/codex-trading/improved_risk.py:297) accepts negative proposed sizes.
-5. [improved_bb_squeeze.py](/home/ubuntu/codex-trading/improved_bb_squeeze.py:280) can classify a neutral release as bearish and validate it. The probe returned `Valid neutral squeeze release`.
-6. [improved_macd.py](/home/ubuntu/codex-trading/improved_macd.py:107) uses absolute histogram thresholds that are not portable across EUR/USD, XAU/USD, and BTCUSDT.
-7. [improved_confidence.py](/home/ubuntu/codex-trading/improved_confidence.py:160) treats every direction other than `"long"` as short and accepts out-of-range signals. It also duplicates calibration responsibilities.
-8. [improved_calibration.py](/home/ubuntu/codex-trading/improved_calibration.py:169) records shadow status when outcomes resolve, not when predictions are issued. It has no prediction IDs, duplicate-resolution protection, or durable state.
+1. [improved_risk.py](improved_risk.py:297) conflates notional exposure with risk and margin. A read-only probe sized a BTC trade to `$30,633` notional on a `$10,000` account while the generic cap is 10%. Track risk-at-stop, gross notional, margin used, leverage, and liquidation buffer separately.
+2. [improved_risk.py](improved_risk.py:365) ignores proposed trade size and position direction during correlation checks. Forex additionally requires currency-level exposure buckets.
+3. [improved_risk.py](improved_risk.py:411) uses balance instead of marked-to-market equity and has no daily-loss control.
+4. [improved_risk.py](improved_risk.py:278) accepts negative ATR multipliers; [check_exposure_limits()](improved_risk.py:297) accepts negative proposed sizes.
+5. [improved_bb_squeeze.py](improved_bb_squeeze.py:280) can classify a neutral release as bearish and validate it. The probe returned `Valid neutral squeeze release`.
+6. [improved_macd.py](improved_macd.py:107) uses absolute histogram thresholds that are not portable across EUR/USD, XAU/USD, and BTCUSDT.
+7. [improved_confidence.py](improved_confidence.py:160) treats every direction other than `"long"` as short and accepts out-of-range signals. It also duplicates calibration responsibilities.
+8. [improved_calibration.py](improved_calibration.py:169) records shadow status when outcomes resolve, not when predictions are issued. It has no prediction IDs, duplicate-resolution protection, or durable state.
 
 ## Recommended Structure
 

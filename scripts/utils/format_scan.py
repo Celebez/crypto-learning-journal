@@ -6,7 +6,7 @@ Reads scan JSON from /tmp/scan_result.json (NOT stdin -- avoids pipe-to-interpre
 Workflow:
   1. Scan script writes JSON to /tmp/scan_result.json via stdout redirect
   2. This formatter reads from that file
-  3. Run: cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/format_scan.py
+  3. Run: cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 /tmp/format_scan.py
 
 No emoji -- safe for heredocs and Telegram delivery.
 

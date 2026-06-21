@@ -5,7 +5,7 @@ Combines prediction generation, old prediction verification, accuracy recalculat
 from verified entries (excluding EXPIRED), registry pruning, and learning weight updates.
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/analyze_predict_cycle.py 2>/dev/null
+  cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 /tmp/analyze_predict_cycle.py 2>/dev/null
 
 Output: JSON to stdout with predictions, verification results, and learning status.
 

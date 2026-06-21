@@ -4,7 +4,7 @@ Combined cronjob: fetch market data -> detect patterns -> predict -> verify old 
 Single script to avoid multiple terminal calls and pipe-to-interpreter security flags.
 
 Usage:
-  cd /home/ubuntu && PYTHONPATH=/home/ubuntu /home/ubuntu/.hermes-venv/bin/python3 /tmp/scan_and_predict.py > /tmp/scan_result.json
+  cd ~ && PYTHONPATH=~ ~/.hermes-venv/bin/python3 /tmp/scan_and_predict.py > /tmp/scan_result.json
 
 Output: JSON to stdout with sections: portfolio, positions, ticker_data, analysis,
         verification_results, new_predictions, registry_summary
@@ -29,7 +29,7 @@ v3.41 (2026-06-05): Fixed NameError: new_accuracy — added accuracy recalculati
 """
 import sys, json, math, os, hashlib, datetime
 
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 from hermes_bybit_bridge import session, get_balance, get_positions
 
 TRACKED = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", "LINKUSDT", "DOGEUSDT", "AVAXUSDT"]

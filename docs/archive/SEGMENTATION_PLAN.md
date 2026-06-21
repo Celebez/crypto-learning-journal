@@ -265,7 +265,7 @@ codex-trading/
 
 ## 📁 Files for Review
 
-Please review the existing code in `/home/ubuntu/codex-trading/`:
+Please review the existing code in `/codex-trading/`:
 - `improved_confidence.py` (11KB)
 - `improved_macd.py` (17KB)
 - `improved_bb_squeeze.py` (19KB)

@@ -9,7 +9,7 @@ This version fixes the "stderr breaks JSON output" pitfall by:
 3. Designed to be run with: python3 scan_observe_detect_robust.py 2>/dev/null
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/scan_observe_detect_robust.py > /tmp/scan_result.json
+  cd ~ && ~/.hermes-venv/bin/python3 /tmp/scan_observe_detect_robust.py > /tmp/scan_result.json
 """
 
 import json
@@ -23,7 +23,7 @@ from pathlib import Path
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # Add home directory to path for hermes_bybit_bridge import
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 
 try:
     from hermes_bybit_bridge import get_price, get_positions, get_balance, session

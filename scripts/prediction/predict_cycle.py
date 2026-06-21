@@ -4,7 +4,7 @@ Prediction cycle: verify old predictions + generate new ones + format output.
 Runs after pattern_detect.py to complete the full cronjob cycle.
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 \
+  cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 \
     ~/.hermes/skills/trading/crypto_portfolio_monitor_learning/scripts/predict_cycle.py
 
 Input: Hardcoded analysis data from pattern_detect.py (paste output into the ANALYSIS dict below).

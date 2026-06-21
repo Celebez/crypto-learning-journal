@@ -4,13 +4,13 @@ Fetch portfolio state and market data for all tracked assets.
 Direct import from hermes_bybit_bridge — bypasses file bridge for reliability.
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 \
+  cd ~ && ~/.hermes-venv/bin/python3 \
     ~/.hermes/skills/trading/crypto_portfolio_monitor_learning/scripts/fetch_market_data.py
 
 Output: JSON to stdout with sections: PORTFOLIO, TICKERS, KLINES (4H), KLINES_1H, FUNDING, ORDERBOOK
 """
 import sys, json
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 
 from hermes_bybit_bridge import session, get_balance, get_positions
 

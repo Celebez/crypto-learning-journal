@@ -3,7 +3,7 @@ Goal: produce definitive production candidates table
 """
 import pandas as pd
 import sys
-sys.path.insert(0, '/home/ubuntu/codex-trading')
+sys.path.insert(0, '~/codex-trading')
 from backtest_v6_mt5 import (
     load_mt5, get_real_spread, PIP_SIZE,
     ema, rsi, macd, atr, bb, backtest_spread,
@@ -137,12 +137,14 @@ Use these per-pair DAILY strategies as PRIMARY signals. Confidence threshold: 75
 """
 print(recommendation)
 
-# Save
+# Save (relative to script directory so it works anywhere)
+from pathlib import Path
+SCRIPT_DIR = Path(__file__).resolve().parent
 df_summary = pd.DataFrame(ALL_RESULTS)
-df_summary.to_csv('/home/ubuntu/codex-trading/BACKTEST_FINAL_v10.csv', index=False)
-print(f'\n\nSaved: /home/ubuntu/codex-trading/BACKTEST_FINAL_v10.csv')
+df_summary.to_csv(SCRIPT_DIR / '../../data/backtests/BACKTEST_FINAL_v10.csv', index=False)
+print(f'\n\nSaved: {SCRIPT_DIR}/../../data/backtests/BACKTEST_FINAL_v10.csv')
 
 # Save AI prompt
-with open('/home/ubuntu/codex-trading/AI_PROMPT_RECOMMENDATION.md', 'w') as f:
+with open(SCRIPT_DIR / '../../docs/archive/AI_PROMPT_RECOMMENDATION.md', 'w') as f:
     f.write(recommendation)
-print(f'Saved: /home/ubuntu/codex-trading/AI_PROMPT_RECOMMENDATION.md')
+print(f'Saved: {SCRIPT_DIR}/../../docs/archive/AI_PROMPT_RECOMMENDATION.md')

@@ -14,7 +14,7 @@ Each segment MUST have different:
 
 ## EXISTING CODE TO REFACTOR
 
-### Files in /home/ubuntu/codex-trading/:
+### Files in /codex-trading/:
 - `improved_confidence.py` — Generic confidence calculator
 - `improved_macd.py` — MACD classifier
 - `improved_bb_squeeze.py` — BB Squeeze detector

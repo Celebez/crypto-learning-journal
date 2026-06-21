@@ -13,7 +13,7 @@ from datetime import datetime
 
 PAIRS = ['EURUSD.m', 'GBPUSD.m', 'USDJPY.m', 'USDCHF.m', 'AUDUSD.m', 'XAUUSD.m']
 TFS = ['D1', 'M30', 'M15']
-DATA_DIR = '/home/ubuntu/codex-trading/backtest/data'
+DATA_DIR = '/codex-trading/backtest/data'
 
 # Pip values for forex, dollar for XAU
 PIP_SIZE = {p: 0.01 if p == 'XAUUSD.m' else (0.01 if 'JPY' in p else 0.0001) for p in PAIRS}
@@ -361,5 +361,5 @@ if __name__ == '__main__':
             agg_wr = wins_total / agg_n * 100 if agg_n else 0
             print(f'\n=== AGGREGATE {tf}: {agg_n} trades, {agg_wr:.1f}% WR, {agg_pips:.1f} pips ===')
 
-    pd.DataFrame(results).to_csv('/home/ubuntu/codex-trading/backtest_v6_mt5_results.csv', index=False)
-    print(f'\nFull: /home/ubuntu/codex-trading/backtest_v6_mt5_results.csv ({len(results)} entries)')
+    pd.DataFrame(results).to_csv('/codex-trading/backtest_v6_mt5_results.csv', index=False)
+    print(f'\nFull: /codex-trading/backtest_v6_mt5_results.csv ({len(results)} entries)')

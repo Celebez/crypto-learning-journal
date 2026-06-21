@@ -2,7 +2,7 @@
 """ANALYZE & PREDICT — Mode 3 (snapshot-based, no API calls)
 Validated: 2026-06-03. Uses confidence_calculation.md reference modifiers.
 Handles: both snapshot formats, verification null, status-safe iteration.
-Run: cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/analyze_predict.py
+Run: cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 /tmp/analyze_predict.py
 """
 import json, os, hashlib, warnings
 from datetime import datetime, timezone

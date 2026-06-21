@@ -9,7 +9,7 @@ For Mode 2 (scan_and_predict), format Telegram output manually.
 
 Usage:
   1. Run predict_only_cycle.py or analyze_predict_v3.py > /tmp/pred_result.json
-  2. Run: cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/format_predictions.py
+  2. Run: cd ~ cd ~ &&cd ~ && ~/.hermes-venv/bin/python3 /tmp/format_predictions.py
 
 Expected input keys:
   - timestamp

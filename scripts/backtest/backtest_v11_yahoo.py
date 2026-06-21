@@ -6,7 +6,7 @@ MT5 spread: JustMarkets real
 import pandas as pd
 import numpy as np
 import sys
-sys.path.insert(0, '/home/ubuntu/codex-trading')
+sys.path.insert(0, '~/codex-trading')
 from backtest_v6_mt5 import (
     ema, rsi, macd, atr, bb, backtest_spread
 )
@@ -26,7 +26,7 @@ SPREAD_PIPS = {
 
 
 def load_yahoo(pair, tf='D1'):
-    p = f'/home/ubuntu/codex-trading/backtest/data/{pair}_{tf}_yahoo.csv'
+    p = f'/codex-trading/backtest/data/{pair}_{tf}_yahoo.csv'
     df = pd.read_csv(p)
     # Yahoo CSV: Date, Open, High, Low, Close, Adj Close, Volume
     date_col = df.columns[0]
@@ -284,8 +284,8 @@ if __name__ == '__main__':
     agg_wr = wins_total / agg_n * 100 if agg_n else 0
     print(f'Total trades: {agg_n}, Aggregate WR: {agg_wr:.1f}%, Total pips: {agg_pips:.1f}')
 
-    pd.DataFrame(results).to_csv('/home/ubuntu/codex-trading/backtest_v11_yahoo.csv', index=False)
-    print(f'\nFull: /home/ubuntu/codex-trading/backtest_v11_yahoo.csv ({len(results)} entries)')
+    pd.DataFrame(results).to_csv('/codex-trading/backtest_v11_yahoo.csv', index=False)
+    print(f'\nFull: /codex-trading/backtest_v11_yahoo.csv ({len(results)} entries)')
 
     # Compare to MT5 results
     print(f'\n=== COMPARISON: MT5 (D1) vs Yahoo (D1) — same strategies ===')

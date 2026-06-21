@@ -6,7 +6,7 @@ import numpy as np
 import os
 import sys
 import itertools
-sys.path.insert(0, '/home/ubuntu/codex-trading')
+sys.path.insert(0, '~/codex-trading')
 from backtest_v6_mt5 import (
     load_mt5, get_real_spread, PIP_SIZE,
     ema, rsi, macd, stoch, atr, bb,
@@ -254,5 +254,5 @@ if __name__ == '__main__':
     for (pair, tf), r in sorted(best_wr.items()):
         print(f"{tf:<5} {pair:<8} {r['strat']:<12} N={r['n']:>3} WR={r['wr']:>5.1f}% Pips={r['total_pips']:>9.1f} PF={r['pf']:>4.2f} {r['params']}")
 
-    pd.DataFrame(results).to_csv('/home/ubuntu/codex-trading/backtest_v7_mt5_param_sweep.csv', index=False)
-    print(f'\nFull: /home/ubuntu/codex-trading/backtest_v7_mt5_param_sweep.csv ({len(results)} entries)')
+    pd.DataFrame(results).to_csv('/codex-trading/backtest_v7_mt5_param_sweep.csv', index=False)
+    print(f'\nFull: /codex-trading/backtest_v7_mt5_param_sweep.csv ({len(results)} entries)')

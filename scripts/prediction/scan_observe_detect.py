@@ -6,14 +6,14 @@ fetches 1H volume for ratio analysis, fear & greed index, fetches portfolio.
 Does NOT update prediction registry (use scan_and_predict_combined.py for that).
 
 Usage:
-  cd /home/ubuntu && /home/ubuntu/.hermes-venv/bin/python3 /tmp/scan_observe_detect.py
+  cd ~ && ~/.hermes-venv/bin/python3 /tmp/scan_observe_detect.py
 
 Output: JSON to stdout with sections: portfolio, positions, analysis, patterns_detected, fear_greed
 """
 import sys, json, math, os
 from datetime import datetime, timezone
 
-sys.path.insert(0, "/home/ubuntu")
+sys.path.insert(0, os.path.expanduser("~"))
 import importlib.util
 import os
 
